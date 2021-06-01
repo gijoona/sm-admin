@@ -44,15 +44,21 @@
       >
         <v-list-item link>
           <v-list-item-icon>
+            <v-icon>mdi-home-city</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Home</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
             <v-icon>mdi-folder</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>My Files</v-list-item-title>
+          <v-list-item-title>Products</v-list-item-title>
         </v-list-item>
         <v-list-item link>
           <v-list-item-icon>
             <v-icon>mdi-account-multiple</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Shared with me</v-list-item-title>
+          <v-list-item-title>Accounts</v-list-item-title>
         </v-list-item>
         <v-list-item link>
           <v-list-item-icon>
@@ -61,6 +67,18 @@
           <v-list-item-title>Starred</v-list-item-title>
         </v-list-item>
       </v-list>
+
+      <template v-slot:append>
+        <v-divider></v-divider>
+        <v-list>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-logout</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Logout</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </template>
     </v-navigation-drawer>
 
     <!-- Sizes your content based upon application components -->
