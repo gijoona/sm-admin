@@ -1,28 +1,140 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app
+    style="background: #FAFAF0;"
+  >
+    <v-navigation-drawer
+      app
+      permanent
+      expand-on-hover
+    >
+      <v-list>
+        <v-list-item class="px-2">
+          <v-list-item-avatar>
+            <v-img
+              alt="Vuetify Logo"
+              class="shrink mr-2"
+              contain
+              src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+              transition="scale-transition"
+              width="40"
+            />
+          </v-list-item-avatar>
+          <v-list-item-content>
+            <v-list-item-title>
+              Space Marine
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+
+        <v-list-item link>
+          <v-list-item-content>
+            <v-list-item-title class="text-h6">
+              Gijoona
+            </v-list-item-title>
+            <v-list-item-subtitle>gijoona@gmail.com</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+      <v-divider></v-divider>
+
+      <v-list
+        nav
+        dense
+      >
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-folder</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>My Files</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-account-multiple</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Shared with me</v-list-item-title>
+        </v-list-item>
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-star</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Starred</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
+    <!-- Sizes your content based upon application components -->
+    <v-main>
+      <!-- Provides the application the proper gutter -->
+      <v-container fluid>
+        <v-card
+          color="transparent"
+          tile
+          class="elevation-0"
+        >
+          <v-toolbar
+            color="transparent"
+            flat
+            dense
+          >
+            Breadcrombs
+
+            <v-spacer></v-spacer>
+
+            <v-btn>
+              functional buttons
+            </v-btn>
+          </v-toolbar>
+        </v-card>
+
+        <!-- If using vue-router -->
+        <router-view></router-view>
+
+        <v-fab-transition>
+          <v-btn
+            color="indigo"
+            dark
+            fixed
+            bottom
+            right
+            fab
+            @click="$vuetify.goTo(target, options)"
+          >
+            <v-icon>mdi-chevron-up</v-icon>
+          </v-btn>
+        </v-fab-transition>
+      </v-container>
+    </v-main>
+
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
-</script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+  data: () => ({
+    drawer: false,
+    prominent: false,
+    bg_color: '#FAFAF0',
+    type: 'number',
+    number: 0,
+    duration: 500,
+    offset: 0,
+    easing: 'easeInOutCubic',
+  }),
+
+  computed: {
+    target() {
+      return Number(this[this.type])
+    },
+    options() {
+      return {
+        duration: this.duration,
+        offset: this.offset,
+        easing: this.easing
+      }
+    }
+  }
+};
+</script>
