@@ -33,7 +33,9 @@ const getters = {
 const actions = {
   async find({ commit, state }, payload) {
     commit('enableLoading');
-    await axios.get(`http://localhost:5000/user/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
+    await axios
+              .get(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/user/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
+              // .get(`http://localhost:5000/user/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
               .then(res => {
                 commit('setTotal', res.data.count);
                 if (res.data.rows.length > 0) commit('setAccounts', res.data.rows);
