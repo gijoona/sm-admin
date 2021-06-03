@@ -42,21 +42,15 @@ const actions = {
                 commit('disableLoading');
               })
   },
-  async save({ commit }) {
+  async save({ dispatch, commit }, payload) {
     commit('enableLoading');
-    await axios.post('')
-              .then(res => {
-                console.log(res.data);
-                commit('disableLoading');
-              })
+    await axios.post('http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/user/save', payload.savedItem )
+              .then(() => dispatch('find', { search: '' }));
   },
-  async delete({ commit }) {
+  async delete({ dispatch, commit }, payload) {
     commit('enableLoading');
-    await axios.delete('')
-              .then(res => {
-                console.log(res.data);
-                commit('disableLoading');
-              })
+    await axios.delete(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/user/delete?id=${payload.id}`)
+              .then(() => dispatch('find', { search: '' }));
   }
 }
 

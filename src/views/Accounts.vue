@@ -375,7 +375,7 @@ export default {
       this.dialogDelete = true
     },
     deleteItemConfirm () {
-      this.$store.dispatch('account/delete');
+      this.$store.dispatch('account/delete', { id: this.editedItem.id });
       this.closeDelete()
     },
     close () {
@@ -393,7 +393,7 @@ export default {
       })
     },
     save () {
-      this.$store.dispatch('account/save', { cmd: this.editedIndex });
+      this.$store.dispatch('account/save', { cmd: this.editedIndex, savedItem: this.editedItem });
       this.close()
     },
   },
