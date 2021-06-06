@@ -34,8 +34,8 @@ const actions = {
   async find({ commit, state }, payload) {
     commit('enableLoading');
     await axios
-              .get(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/user/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
-              // .get(`http://localhost:5000/user/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
+              // .get(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/users/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
+              .get(`http://localhost:5000/users/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
               .then(res => {
                 commit('setTotal', res.data.count);
                 if (res.data.rows.length > 0) commit('setAccounts', res.data.rows);
@@ -44,12 +44,12 @@ const actions = {
   },
   async save({ dispatch, commit }, payload) {
     commit('enableLoading');
-    await axios.post('http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/user/save', payload.savedItem )
+    await axios.post('http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/users/save', payload.savedItem )
               .then(() => dispatch('find', { search: '' }));
   },
   async delete({ dispatch, commit }, payload) {
     commit('enableLoading');
-    await axios.delete(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/user/delete?id=${payload.id}`)
+    await axios.delete(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/users/remove/${payload.id}`)
               .then(() => dispatch('find', { search: '' }));
   }
 }

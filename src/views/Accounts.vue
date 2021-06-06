@@ -251,7 +251,7 @@
         </v-dialog>
         <v-dialog v-model="dialogDelete" max-width="500px">
           <v-card>
-            <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
+            <v-card-title class="text-h5">Are you sure you want to delete this Account?</v-card-title>
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
@@ -313,18 +313,50 @@ export default {
       dialogDelete: false,
       editedIndex: -1,
       editedItem: {
+        addr1: '',
+        addr2: '',
+        area1: '',
+        area2: '',
+        ceoNm: '',
+        companyNo: '',
+        corpNo: '',
+        createdAt: '',
+        email: '',
+        fax: '',
+        id: '',
+        isPaidMember: 'N',
         name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
+        nation: '',
+        paidEnd: '',
+        paidStart: '',
+        phone: '',
+        tel: '',
+        type: '',
+        updatedAt: '',
+        zipCode: ''
       },
       defaultItem: {
+        addr1: '',
+        addr2: '',
+        area1: '',
+        area2: '',
+        ceoNm: '',
+        companyNo: '',
+        corpNo: '',
+        createdAt: '',
+        email: '',
+        fax: '',
+        id: '',
+        isPaidMember: 'N',
         name: '',
-        calories: 0,
-        fat: 0,
-        carbs: 0,
-        protein: 0,
+        nation: '',
+        paidEnd: '',
+        paidStart: '',
+        phone: '',
+        tel: '',
+        type: '',
+        updatedAt: '',
+        zipCode: ''
       },
     }
   },
@@ -367,6 +399,7 @@ export default {
     editItem (item) {
       this.editedIndex = this.accounts.indexOf(item)
       this.editedItem = Object.assign({}, item)
+      console.log(this.editedItem);
       this.dialog = true
     },
     deleteItem (item) {

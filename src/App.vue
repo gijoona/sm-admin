@@ -52,11 +52,14 @@
           </v-list-item-icon>
           <v-list-item-title>Home</v-list-item-title>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item 
+          link
+          to="/items"
+        >
           <v-list-item-icon>
             <v-icon>mdi-folder</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Products</v-list-item-title>
+          <v-list-item-title>Items</v-list-item-title>
         </v-list-item>
         <v-list-item 
           link
