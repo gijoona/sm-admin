@@ -34,8 +34,8 @@ const actions = {
   async find({ commit, state }, payload) {
     commit('enableLoading');
     await axios
-              // .get(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/item/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
-              .get(`http://localhost:5000/items/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
+              .get(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/items/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
+              // .get(`http://localhost:5000/items/find?page=${state.pageNum}&limit=${state.limit}&search=${payload.search}`)
               .then(res => {
                 commit('setTotal', res.data.count);
                 if (res.data.rows.length > 0) commit('setItems', res.data.rows);
@@ -45,15 +45,15 @@ const actions = {
   async save({ dispatch, commit }, payload) {
     commit('enableLoading');
     await axios
-              // .post('http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/item/save', payload.savedItem )
-              .post('http://localhost:5000/items/save', payload.savedItem )
+              .post('http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/items/save', payload.savedItem )
+              // .post('http://localhost:5000/items/save', payload.savedItem )
               .then(() => dispatch('find', { search: '' }));
   },
   async delete({ dispatch, commit }, payload) {
     commit('enableLoading');
     await axios
-              // .delete(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/item/delete?id=${payload.code}`)
-              .delete(`http://localhost:5000/items/remove/${payload.code}`)
+              .delete(`http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000/items/remove/${payload.code}`)
+              // .delete(`http://localhost:5000/items/remove/${payload.code}`)
               .then(() => dispatch('find', { search: '' }));
   }
 }

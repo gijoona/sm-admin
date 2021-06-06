@@ -60,6 +60,15 @@
                     md="3"
                   >
                     <v-text-field
+                      v-model="editedItem.code"
+                      label="CODE"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-text-field
                       v-model="editedItem.id"
                       label="ID"
                     ></v-text-field>
@@ -226,6 +235,15 @@
                       label="CEO"
                     ></v-text-field>
                   </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-text-field
+                      v-model="editedItem.pass"
+                      label="PASS"
+                    ></v-text-field>
+                  </v-col>
                 </v-row>
               </v-container>
             </v-card-text>
@@ -286,6 +304,7 @@ export default {
     return {
       search: '',
       headers: [
+        { text: 'code', value: 'code', class: 'd-none', cellClass: 'd-none' },
         { text: 'id', value: 'id', divider: true, align: 'center', cellClass: 'text-overline' },
         { text: 'name', value: 'name', divider: true, align: 'center', cellClass: 'text-overline' },
         { text: 'ceoNm', value: 'ceoNm', divider: true, align: 'center', cellClass: 'text-overline' },
@@ -306,6 +325,7 @@ export default {
         { text: 'area1', value: 'area1', class: 'd-none', cellClass: 'd-none' },
         { text: 'area2', value: 'area2', class: 'd-none', cellClass: 'd-none' },
         { text: 'corpNo', value: 'corpNo', class: 'd-none', cellClass: 'd-none' },
+        { text: 'pass', value: 'pass', class: 'd-none', cellClass: 'd-none' },
         { text: 'updatedAt', value: 'updatedAt', class: 'd-none', cellClass: 'd-none' },
         { text: 'Actions', value: 'actions' }
       ],
