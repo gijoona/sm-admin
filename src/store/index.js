@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import category from './modules/category.store'
 import item from './modules/item.store'
 import account from './modules/account.store'
+import user from './modules/user.store'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     item,
     category,
     account,
+    user
   },
   strict: debug,
   // plugins: debug ? [createLogger()] : []

@@ -3,14 +3,11 @@ import App from './App.vue'
 import vuetify from './plugins/vuetify'
 import store from './store'
 import router from './router'
-import axios from 'axios'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
 Vue.config.productionTip = false
-
-Vue.prototype.$http = axios
 
 new Vue({
   vuetify,
