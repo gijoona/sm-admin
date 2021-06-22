@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
 import Items from '../views/Items.vue'
 import Accounts from '../views/Accounts.vue'
+import Langs from '../views/Langs.vue'
 import Login from '../views/Login.vue'
 
 import store from './../store'
@@ -26,6 +27,12 @@ const routes = [
     path: '/accounts',
     name: 'Accounts',
     component: Accounts,
+    meta: { requiresAuth: true }
+  },
+  {
+    path: '/langs',
+    name: 'Langs',
+    component: Langs,
     meta: { requiresAuth: true }
   },
   {

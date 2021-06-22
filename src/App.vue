@@ -52,6 +52,7 @@
           </v-list-item-icon>
           <v-list-item-title>Home</v-list-item-title>
         </v-list-item>
+
         <v-list-item 
           link
           to="/items"
@@ -61,6 +62,7 @@
           </v-list-item-icon>
           <v-list-item-title>Items</v-list-item-title>
         </v-list-item>
+
         <v-list-item 
           link
           to="/accounts"
@@ -70,6 +72,17 @@
           </v-list-item-icon>
           <v-list-item-title>Accounts</v-list-item-title>
         </v-list-item>
+
+        <v-list-item 
+          link
+          to="/langs"
+        >
+          <v-list-item-icon>
+            <v-icon>mdi-translate</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Langs</v-list-item-title>
+        </v-list-item>
+
         <v-list-item link>
           <v-list-item-icon>
             <v-icon>mdi-star</v-icon>
