@@ -4,8 +4,8 @@ import store from './../store';
 
 // axios 인스턴스를 생성합니다.
 const instance = axios.create({
-  // baseURL: 'http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000',
-  baseURL: 'http://localhost:5000',
+  baseURL: 'http://ec2-3-12-199-144.us-east-2.compute.amazonaws.com:5000',
+  // baseURL: 'http://localhost:5000',
   timeout: 10000
 });
 

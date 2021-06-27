@@ -50,7 +50,7 @@ const actions = {
   async delete({ dispatch, commit }, payload) {
     commit('enableLoading');
     await instance
-              .delete(`/users/remove/${payload.id}`)
+              .delete(`/users/remove/${payload.code}`)
               .then(() => dispatch('find', { search: '' }));
   }
 }

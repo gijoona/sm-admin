@@ -428,7 +428,7 @@ export default {
       this.dialogDelete = true
     },
     deleteItemConfirm () {
-      this.$store.dispatch('account/delete', { id: this.editedItem.id });
+      this.$store.dispatch('account/delete', { code: this.editedItem.code });
       this.closeDelete()
     },
     close () {
