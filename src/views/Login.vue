@@ -52,13 +52,6 @@
               @click="login"
             >Login</v-btn>
           </v-col>
-          <v-col>
-            <v-btn
-              block
-              dark
-              color="green"
-            >Join</v-btn>
-          </v-col>
         </v-row>
       </v-card-actions>
     </v-card>
