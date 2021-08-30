@@ -52,6 +52,12 @@ const actions = {
     await instance
               .delete(`/items/remove/${payload.code}`)
               .then(() => dispatch('find', { search: '' }));
+  },
+  async fileUpload(obj, payload) {
+    console.log(payload);
+    await instance
+              .post('/items/fileUpload', payload)
+              .then((res) => console.log(res));
   }
 }
 

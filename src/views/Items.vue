@@ -59,10 +59,13 @@
                     cols="12"
                     md="3"
                   >
-                    <v-text-field
-                      v-model="editedItem.pig"
+                    <v-file-input
                       label="IMAGE"
-                    ></v-text-field>
+                      show-size
+                      truncate-length="4"
+                      prepend-icon="mdi-camera"
+                      @change="fileUpload"
+                    ></v-file-input>
                   </v-col>
                   <v-col
                     cols="12"
@@ -338,6 +341,12 @@ export default {
       this.$store.dispatch('item/save', { cmd: this.editedIndex, savedItem: this.editedItem });
       this.close()
     },
+    fileUpload(file) {
+      let formData = new FormData();
+      formData.append('file', file);
+      formData.append('category', '00');
+      this.$store.dispatch('item/fileUpload', formData);
+    }
   },
   mounted() {
     this.$store.dispatch('item/find', { search: this.search })
