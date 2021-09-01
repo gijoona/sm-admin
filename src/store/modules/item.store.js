@@ -54,10 +54,11 @@ const actions = {
               .then(() => dispatch('find', { search: '' }));
   },
   async fileUpload(obj, payload) {
-    console.log(payload);
-    await instance
+    return await instance
               .post('/items/fileUpload', payload)
-              .then((res) => console.log(res));
+              .then((res) => {
+                return res.data;
+              });
   }
 }
 

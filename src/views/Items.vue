@@ -59,6 +59,11 @@
                     cols="12"
                     md="3"
                   >
+                    <Img-Component
+                      :path="editedItem.pig"
+                      max-width="100"
+                      max-height="100"
+                    ></Img-Component>
                     <v-file-input
                       label="IMAGE"
                       show-size
@@ -202,6 +207,15 @@
         </v-dialog>
       </v-toolbar>
     </template>
+
+    <template v-slot:item.pig="{ item }">
+      <Img-Component
+        :path="item.pig"
+        max-width="100"
+        max-height="100"
+      ></Img-Component>
+    </template>
+
     <template v-slot:item.actions="{ item }">
       <v-icon
         small
@@ -271,6 +285,7 @@ export default {
         sellPrice: 0,
         unit: ''
       },
+      noImage: '/photo_1280.png'
     }
   },
   computed:{
@@ -345,7 +360,13 @@ export default {
       let formData = new FormData();
       formData.append('file', file);
       formData.append('category', '00');
-      this.$store.dispatch('item/fileUpload', formData);
+      this.$store
+          .dispatch('item/fileUpload', formData)
+          .then(data => {
+            console.log(data);
+            // 서버에 업로드되면서 encoding된 파일명을 넣어준다.
+            this.editedItem.pig = `/${data.filename}`;
+          });
     }
   },
   mounted() {
