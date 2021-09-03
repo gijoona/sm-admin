@@ -1,3 +1,4 @@
+import moment from 'moment'
 import instance from './../../plugins/axios';
 
 // initial state
@@ -5,21 +6,25 @@ const state = () => ({
   all: [],
   code: '',
   loading: false,
-  chartData: []
+  logData: [],
+  loginLogs: {}
 })
 
 // getters
 const getters = {
-  getChartData(state) {
-    return state.chartData;
+  getLogData(state) {
+    return state.logData;
   },
   getLoginData(state) {
-    return state.chartData
-                .filter(data => data.action === 'login')
-                .map(data => {
-                  const { action, createdAt, type } = data;
-                  return { action, createdAt, type };
-                });
+    const data = {
+      labels: [],
+      values: []
+    };
+    for(let key in state.loginLogs) {
+      data.labels.push(moment(key).format('MM/DD'));
+      data.values.push(state.loginLogs[key]);
+    }
+    return data;
   }
 }
 
@@ -32,7 +37,9 @@ const actions = {
     await instance
               .get('/logs/findChart')
               .then(res => {
-                if (res.data.length > 0) commit('setChartData', res.data);
+                if (res.data.length > 0) commit('setLogData', res.data);
+
+                commit('setLoginLogs');
                 commit('disableLoading');
               })
   },
@@ -40,8 +47,18 @@ const actions = {
 
 // mutations
 const mutations = {
-  setChartData(state, payload) {
-    state.chartData = payload;
+  setLogData(state, payload) {
+    state.logData = payload;
+  },
+  setLoginLogs(state) {
+    state.loginLogs = {};
+    state.logData
+                .filter(data => data.action === 'login')
+                .forEach(data => {
+                  const { createdAt } = data;
+                  if (state.loginLogs[createdAt]) state.loginLogs[createdAt]++;
+                  else state.loginLogs[createdAt] = 1;
+                });
   },
   enableLoading(state) {
     state.loading = true;
