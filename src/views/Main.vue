@@ -1,17 +1,127 @@
 <template>
-  <div>
+  <v-container>
     <v-row>
       <v-col>
-        <v-card>
-          <v-sheet>
-            <svg id="loginChart"></svg>
+        <v-card
+          color="light-blue"
+          height="120"
+          dark
+        >
+          <v-card-title>
+            평균 방문자 수
+          </v-card-title>
+          <v-sheet
+            class="text-right text-h3"
+            color="light-blue"
+          >
+            <h1
+              style="margin-top: -20px;"
+            >{{ loginData.avg }} <span class="mr-5 text-subtitle-2">명</span></h1>
           </v-sheet>
         </v-card>
       </v-col>
       <v-col>
+        <v-card
+          color="teal"
+          height="120"
+          dark
+        >
+          <v-card-title>
+            누적 방문자 수
+          </v-card-title>
+          <v-sheet
+            class="text-right text-h3"
+            color="teal"
+          >
+            <h1
+              style="margin-top: -20px;"
+            >{{ loginData.total }} <span class="mr-5 text-subtitle-2">명</span></h1>
+          </v-sheet>
+        </v-card>
+      </v-col>
+      <v-col>
+        <v-card
+          color="cyan"
+          height="120"
+          dark
+        >
+          <v-card-title>
+            전체 회원 수
+          </v-card-title>
+          <v-sheet
+            class="text-right text-h3"
+            color="cyan"
+          >
+            <h1
+              style="margin-top: -20px;"
+            >{{ joinData.total }} <span class="mr-5 text-subtitle-2">명</span></h1>
+          </v-sheet>
+        </v-card>
       </v-col>
     </v-row>
-  </div>
+    <v-row>
+      <v-col>
+        <v-card
+          color="light-blue darken-4"
+          dark
+        >
+          <v-card-text
+            class="text-h6 font-weight-black"
+          >
+            일별 접속현황
+          </v-card-text>
+          <v-sheet
+            color="light-blue darken-2"
+          >
+            <v-sparkline
+              :labels="loginData.labels"
+              :value="loginData.values"
+              color="white"
+              label-size="5"
+              auto-draw
+            ></v-sparkline>
+          </v-sheet>
+        </v-card>
+      </v-col>
+      <v-col>
+        <v-card
+          color="cyan darken-4"
+          dark
+        >
+          <v-card-text
+            class="text-h6 font-weight-black"
+          >
+            누적 회원가입 현황
+          </v-card-text>
+          <v-sheet
+            color="cyan darken-2"
+          >
+            <v-sparkline
+              :labels="joinData.accs"
+              :value="joinData.accs"
+              color="white"
+              label-size="5"
+              auto-draw
+            ></v-sparkline>
+          </v-sheet>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col>
+        <v-card>
+          <v-card-text
+            class="text-h6 font-weight-black"
+          >
+            제품 선호현황
+          </v-card-text>
+          <v-sheet>
+            <svg width="500" height="500"></svg>
+          </v-sheet>
+        </v-card>
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
@@ -26,46 +136,27 @@ export default {
   computed: {
     ...mapGetters({
       logData: 'log/getLogData',
-      loginData: 'log/getLoginData'
+      loginData: 'log/getLoginData',
+      joinData: 'log/getJoinData',
+      cartData: 'log/getCartData'
     })
   },
   methods: {
-    drawLoginChart() {
-      let marge = { top: 10, bottom: 60, left: 10, right: 60 }
-      let dataset = this.loginData.values;
-      let scaleLinear = d3
-        .scaleLinear()
-        .domain([0, d3.max(dataset)])
-        .range([0, 250])
-      let svg = d3.select('svg')
-      let g = svg.append('g').attr('transform', 'translate(' + marge.top + ',' + marge.left + ')')
-      let rectHeight = 7
-      g.selectAll('rect')
-        .data(dataset)
-        .enter()
-        .append('rect')
-        .attr('x', 20)
-        .attr('y', function (d, i) {
-          return i * rectHeight
-        })
-        .attr('width', function (d) {
-          return scaleLinear(d)
-        })
-        .attr('height', rectHeight - 5)
-        .attr('fill', 'lightblue')
-      let xScale = d3
-        .scaleLinear()
-        .domain([0, d3.max(dataset)])
-        .range([0, 250])
-      let xAxis = d3.axisBottom(xScale).ticks(7)
-      g.append('g')
-        .attr('transform', 'translate(' + 20 + ',' + dataset.length * rectHeight + ')')
-        .call(xAxis)
+    drawCartChart() {
+      d3.select('v-sheet')
+        .selectAll('svg')
+        .data(this.cartData)
+        .enter().append('rect')
+        .attr('fill', 'blue')
+        .attr('height', 20)
+        .attr('width', (d) => d.count * 10)
+        .attr('x', (d, i) => i * 30)
+        .attr('y', (d, i) => i * 30);
     }
   },
   mounted() {
     this.$store.dispatch('log/findChart');
-    this.drawLoginChart();
+    this.drawCartChart();
   }
 }
 </script>

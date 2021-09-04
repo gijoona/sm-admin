@@ -28,11 +28,17 @@
         </v-list-item>
 
         <v-list-item link>
-          <v-list-item-content>
+          <v-list-item-content v-if="userinfo.name">
             <v-list-item-title class="text-h6">
-              Gijoona
+              {{ userinfo.name }}
             </v-list-item-title>
-            <v-list-item-subtitle>gijoona@gmail.com</v-list-item-subtitle>
+            <v-list-item-subtitle>{{ userinfo.email }}</v-list-item-subtitle>
+          </v-list-item-content>
+          <v-list-item-content v-else>
+            <v-list-item-title class="text-h6">
+              스페이스마린
+            </v-list-item-title>
+            <v-list-item-subtitle>관리자사이트</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -50,7 +56,7 @@
           <v-list-item-icon>
             <v-icon>mdi-home-city</v-icon>
           </v-list-item-icon>
-          <v-list-item-title>Home</v-list-item-title>
+          <v-list-item-title>Dashboard</v-list-item-title>
         </v-list-item>
 
         <v-list-item 
@@ -118,20 +124,28 @@
             flat
             dense
           >
-            Breadcrombs
+            <h1>
+              <v-icon
+                class="mr-1"
+                large
+              >
+                {{ $route.meta.icon }}
+              </v-icon>
+              {{ $route.name }}
+            </h1>
 
             <v-spacer></v-spacer>
 
-            <v-btn>
+            <!-- <v-btn>
               functional buttons
-            </v-btn>
+            </v-btn> -->
           </v-toolbar>
         </v-card>
 
         <!-- If using vue-router -->
         <router-view></router-view>
 
-        <v-fab-transition>
+        <!-- <v-fab-transition>
           <v-btn
             color="indigo"
             dark
@@ -143,7 +157,7 @@
           >
             <v-icon>mdi-chevron-up</v-icon>
           </v-btn>
-        </v-fab-transition>
+        </v-fab-transition> -->
       </v-container>
     </v-main>
 
@@ -151,6 +165,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 export default {
   name: 'App',
 
@@ -166,6 +181,9 @@ export default {
   }),
 
   computed: {
+    ...mapGetters({
+      userinfo: 'user/userinfo'
+    }),
     target() {
       return Number(this[this.type])
     },

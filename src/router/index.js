@@ -13,32 +13,33 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'Main',
+    name: 'Dashboard',
     component: Main,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, icon: 'mdi-home-city' }
   },
   {
     path: '/items',
     name: 'Items',
     component: Items,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, icon: 'mdi-folder' }
   },
   {
     path: '/accounts',
     name: 'Accounts',
     component: Accounts,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, icon: 'mdi-account-multiple' }
   },
   {
     path: '/langs',
     name: 'Langs',
     component: Langs,
-    meta: { requiresAuth: true }
+    meta: { requiresAuth: true, icon: 'mdi-translate' }
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login
+    component: Login,
+    meta: { icon: 'mdi-login' }
   }
 ]
 
