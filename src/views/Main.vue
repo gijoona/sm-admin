@@ -1,5 +1,7 @@
 <template>
-  <v-container>
+  <v-container
+    fluid
+  >
     <v-row>
       <v-col>
         <v-card
@@ -7,7 +9,9 @@
           height="120"
           dark
         >
-          <v-card-title>
+          <v-card-title
+            class="text-h6 font-weight-black"
+          >
             평균 방문자 수
           </v-card-title>
           <v-sheet
@@ -26,7 +30,9 @@
           height="120"
           dark
         >
-          <v-card-title>
+          <v-card-title
+            class="text-h6 font-weight-black"
+          >
             누적 방문자 수
           </v-card-title>
           <v-sheet
@@ -45,7 +51,9 @@
           height="120"
           dark
         >
-          <v-card-title>
+          <v-card-title
+            class="text-h6 font-weight-black"
+          >
             전체 회원 수
           </v-card-title>
           <v-sheet
@@ -65,11 +73,11 @@
           color="light-blue darken-4"
           dark
         >
-          <v-card-text
+          <v-card-title
             class="text-h6 font-weight-black"
           >
             일별 접속현황
-          </v-card-text>
+          </v-card-title>
           <v-sheet
             color="light-blue darken-2"
           >
@@ -85,16 +93,16 @@
       </v-col>
       <v-col>
         <v-card
-          color="cyan darken-4"
+          color="indigo darken-1"
           dark
         >
-          <v-card-text
+          <v-card-title
             class="text-h6 font-weight-black"
           >
             누적 회원가입 현황
-          </v-card-text>
+          </v-card-title>
           <v-sheet
-            color="cyan darken-2"
+            color="indigo lighten-1"
           >
             <v-sparkline
               :labels="joinData.accs"
@@ -109,13 +117,18 @@
     </v-row>
     <v-row>
       <v-col>
-        <v-card>
-          <v-card-text
+        <v-card
+          color="cyan darken-3"
+          dark
+        >
+          <v-card-title
             class="text-h6 font-weight-black"
           >
             제품 선호현황
-          </v-card-text>
-          <v-sheet>
+          </v-card-title>
+          <v-sheet
+            color="cyan"
+          >
             <svg width="500" height="500"></svg>
           </v-sheet>
         </v-card>

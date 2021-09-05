@@ -89,12 +89,6 @@
           <v-list-item-title>Langs</v-list-item-title>
         </v-list-item>
 
-        <v-list-item link>
-          <v-list-item-icon>
-            <v-icon>mdi-star</v-icon>
-          </v-list-item-icon>
-          <v-list-item-title>Starred</v-list-item-title>
-        </v-list-item>
       </v-list>
 
       <template v-slot:append>

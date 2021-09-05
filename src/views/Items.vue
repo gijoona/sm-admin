@@ -13,6 +13,7 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color="#FAFAF0"
       >
         <v-toolbar-title>
           <v-text-field
@@ -240,19 +241,19 @@ export default {
     return {
       search: '',
       headers: [
-        { text: 'image', value: 'pig', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'code', value: 'code', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'name-kr', value: 'nameKor', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'name-en', value: 'nameEng', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'unit', value: 'unit', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'price(buy)', value: 'buyPrice', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'price-1(buy)', value: 'buyPrice1', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'price-2(buy)', value: 'buyPrice2', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'place(sell)', value: 'sellPlace', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'price(sell)', value: 'sellPrice', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'marker', value: 'marker', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'category', value: 'category_code', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'Actions', value: 'actions' }
+        { text: '이미지', value: 'pig', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline py-2' },
+        { text: '코드', value: 'code', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '한글명', value: 'nameKor', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '영문명', value: 'nameEng', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '단위', value: 'unit', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '구매가', value: 'buyPrice', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '구매가1', value: 'buyPrice1', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '구매가2', value: 'buyPrice2', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '판매가', value: 'sellPlace', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '판매처', value: 'sellPrice', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '비고', value: 'marker', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '카테고리', value: 'category_code', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '', value: 'actions', class: 'grey lighten-1' }
       ],
       dialog: false,
       dialogDelete: false,

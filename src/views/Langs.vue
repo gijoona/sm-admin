@@ -6,6 +6,7 @@
       <v-col
         cols="12"
         md="4"
+        class="pt-10"
       >
         <v-data-table
           :headers="masterHeaders"
@@ -32,6 +33,7 @@
       <v-col
         cols="12"
         md="8"
+        style="margin-top: -35px;"
       >
         <v-data-table
           :headers="slaveHeaders"
@@ -40,6 +42,7 @@
           <template v-slot:top>
             <v-toolbar
               flat
+              color="#FAFAF0"
             >
               <v-toolbar-title>
                 <v-text-field
@@ -195,20 +198,20 @@ export default {
       currentMasterId: 0,
       masterHeaders: [
         { text: 'ID', value: 'id', class: 'd-none', cellClass: 'd-none' },
-        { text: 'NAME', value: 'name', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'SORT', value: 'sort', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'USE', value: 'isUse', divider: true, align: 'center', cellClass: 'text-overline' },
-        { value: 'actions' }
+        { text: 'NAME', value: 'name', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'SORT', value: 'sort', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'USE', value: 'isUse', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { value: 'actions', class: 'grey lighten-1' }
       ],
       slaveHeaders: [
         { text: 'ID', value: 'id', class: 'd-none', cellClass: 'd-none' },
         { text: 'MASTER', value: 'masterId', class: 'd-none', cellClass: 'd-none' },
-        { text: 'CODE', value: 'code', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'TYPE', value: 'type', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'TEXT', value: 'text', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'SORT', value: 'sort', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'USE', value: 'isUse', divider: true, align: 'center', cellClass: 'text-overline' },
-        { value: 'actions' }
+        { text: 'CODE', value: 'code', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'TYPE', value: 'type', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'TEXT', value: 'text', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'SORT', value: 'sort', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'USE', value: 'isUse', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { value: 'actions', class: 'grey lighten-1' }
       ],
       masterDialog: false,
       masterDialogDelete: false,

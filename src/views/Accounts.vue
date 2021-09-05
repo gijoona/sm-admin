@@ -13,6 +13,7 @@
     <template v-slot:top>
       <v-toolbar
         flat
+        color="#FAFAF0"
       >
         <v-toolbar-title>
           <v-text-field
@@ -305,19 +306,19 @@ export default {
       search: '',
       headers: [
         { text: 'code', value: 'code', class: 'd-none', cellClass: 'd-none' },
-        { text: 'id', value: 'id', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'name', value: 'name', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'ceoNm', value: 'ceoNm', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'email', value: 'email', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'tel', value: 'tel', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'fax', value: 'fax', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'phone', value: 'phone', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'type', value: 'type', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'companyNo', value: 'companyNo', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'createdAt', value: 'createdAt', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'isPaidMember', value: 'isPaidMember', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'paidStart', value: 'paidStart', divider: true, align: 'center', cellClass: 'text-overline' },
-        { text: 'paidEnd', value: 'paidEnd', divider: true, align: 'center', cellClass: 'text-overline' },
+        { text: '아이디', value: 'id', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline py-2' },
+        { text: '이름', value: 'name', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '대표자', value: 'ceoNm', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '이메일', value: 'email', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '전화번호', value: 'tel', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '핸드폰', value: 'phone', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '팩스', value: 'fax', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '구분', value: 'type', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '사업자등록번호', value: 'companyNo', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: '가입일자', value: 'createdAt', divider: true, align: 'center', class: 'grey lighten-1 text-subtitle-1 font-weight-bold', cellClass: 'text-overline' },
+        { text: 'isPaidMember', value: 'isPaidMember', class: 'd-none', cellClass: 'd-none' },
+        { text: 'paidStart', value: 'paidStart', class: 'd-none', cellClass: 'd-none' },
+        { text: 'paidEnd', value: 'paidEnd', class: 'd-none', cellClass: 'd-none' },
         { text: 'zipCode', value: 'zipCode', class: 'd-none', cellClass: 'd-none' },
         { text: 'addr1', value: 'addr1', class: 'd-none', cellClass: 'd-none' },
         { text: 'addr2', value: 'addr2', class: 'd-none', cellClass: 'd-none' },
@@ -327,7 +328,7 @@ export default {
         { text: 'corpNo', value: 'corpNo', class: 'd-none', cellClass: 'd-none' },
         { text: 'pass', value: 'pass', class: 'd-none', cellClass: 'd-none' },
         { text: 'updatedAt', value: 'updatedAt', class: 'd-none', cellClass: 'd-none' },
-        { text: 'Actions', value: 'actions' }
+        { text: '', value: 'actions', class: 'grey lighten-1' }
       ],
       dialog: false,
       dialogDelete: false,
