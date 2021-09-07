@@ -53,128 +53,151 @@
               <span class="text-h5">{{ formTitle }}</span>
             </v-card-title>
 
+            <v-divider class="mx-2"></v-divider>
+
             <v-card-text>
               <v-container>
                 <v-row>
                   <v-col
                     cols="12"
                     md="3"
+                    @click="$refs.imagefile.click()"
                   >
                     <Img-Component
                       :path="editedItem.pig"
-                      max-width="100"
-                      max-height="100"
+                      max-width="170"
+                      max-height="282"
                     ></Img-Component>
-                    <v-file-input
-                      label="IMAGE"
-                      show-size
-                      truncate-length="4"
-                      prepend-icon="mdi-camera"
+                    <input type="file"
+                      ref="imagefile"
                       @change="fileUpload"
-                    ></v-file-input>
+                      class="d-none"
+                    >
                   </v-col>
                   <v-col
                     cols="12"
-                    md="3"
+                    md="9"
                   >
-                    <v-text-field
-                      v-model="editedItem.code"
-                      label="CODE"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.nameKor"
-                      label="NAME(KR)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.nameEng"
-                      label="NAME(EN)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.unit"
-                      label="UNIT"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.buyPrice"
-                      label="PRICE(BUY)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.buyPrice1"
-                      label="PRICE-1(BUY)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.buyPrice2"
-                      label="PRICE-2(BUY)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.sellPlace"
-                      label="PLACE(SELL)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.sellPrice"
-                      label="PRICE(SELL)"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.marker"
-                      label="MARKER"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.category_code"
-                      label="CATEGORY"
-                    ></v-text-field>
+                    <v-row>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.code"
+                          label="CODE"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.category_code"
+                          label="CATEGORY"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col
+                        cols="12"
+                        md="6"
+                      >
+                        <v-text-field
+                          v-model="editedItem.nameKor"
+                          label="NAME(KR)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="6"
+                      >
+                        <v-text-field
+                          v-model="editedItem.nameEng"
+                          label="NAME(EN)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.unit"
+                          label="UNIT"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.marker"
+                          label="MARKER"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.sellPlace"
+                          label="PLACE(SELL)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.sellPrice"
+                          label="PRICE(SELL)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.buyPrice"
+                          label="PRICE(BUY)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.buyPrice1"
+                          label="PRICE-1(BUY)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                      <v-col
+                        cols="12"
+                        md="3"
+                      >
+                        <v-text-field
+                          v-model="editedItem.buyPrice2"
+                          label="PRICE-2(BUY)"
+                          hide-details
+                        ></v-text-field>
+                      </v-col>
+                    </v-row>
                   </v-col>
                 </v-row>
               </v-container>
             </v-card-text>
+
+            <v-divider class="mx-4"></v-divider>
 
             <v-card-actions>
               <v-spacer></v-spacer>

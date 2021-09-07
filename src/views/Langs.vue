@@ -82,6 +82,8 @@
                     <span class="text-h5">{{ formTitle }}</span>
                   </v-card-title>
 
+                  <v-divider class="mx-1"></v-divider>
+
                   <v-card-text>
                     <v-container>
                       <v-row>
@@ -105,7 +107,7 @@
                         </v-col>
                         <v-col
                           cols="12"
-                          md="3"
+                          md="6"
                         >
                           <v-text-field
                             v-model="slaveEditedItem.text"
@@ -125,14 +127,18 @@
                           cols="12"
                           md="3"
                         >
-                          <v-text-field
+                          <v-select
                             v-model="slaveEditedItem.isUse"
+                            :items="useItems"
                             label="USE"
-                          ></v-text-field>
+                          >
+                          </v-select>
                         </v-col>
                       </v-row>
                     </v-container>
                   </v-card-text>
+
+                  <v-divider class="mx-4"></v-divider>
 
                   <v-card-actions>
                     <v-spacer></v-spacer>
@@ -249,6 +255,7 @@ export default {
         isUse: 'Y',
         masterId: 0
       },
+      useItems: ['Y', 'N']
     }
   },
   computed: {

@@ -129,7 +129,11 @@
           <v-sheet
             color="cyan"
           >
-            <svg width="500" height="500"></svg>
+            <BarChart
+              v-if="render"
+              :labels="cartData.labels"
+              :values="cartData.values"
+            />
           </v-sheet>
         </v-card>
       </v-col>
@@ -138,13 +142,18 @@
 </template>
 
 <script>
-import * as d3 from 'd3'
 import { mapGetters } from 'vuex'
+import BarChart from '@/components/chart/Bar-chart'
 // @ is an alias to /src
 export default {
+  components: {
+    BarChart
+  },
   name: 'Main',
   data: () => {
-    return {}
+    return {
+      render: false
+    }
   },
   computed: {
     ...mapGetters({
@@ -154,22 +163,14 @@ export default {
       cartData: 'log/getCartData'
     })
   },
-  methods: {
-    drawCartChart() {
-      d3.select('v-sheet')
-        .selectAll('svg')
-        .data(this.cartData)
-        .enter().append('rect')
-        .attr('fill', 'blue')
-        .attr('height', 20)
-        .attr('width', (d) => d.count * 10)
-        .attr('x', (d, i) => i * 30)
-        .attr('y', (d, i) => i * 30);
+  watch: {
+    cartData() {
+      this.render = true;
     }
   },
+  methods: {},
   mounted() {
     this.$store.dispatch('log/findChart');
-    this.drawCartChart();
   }
 }
 </script>

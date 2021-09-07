@@ -53,18 +53,11 @@
               <span class="text-h5">{{ formTitle }}</span>
             </v-card-title>
 
+            <v-divider class="mx-1"></v-divider>
+
             <v-card-text>
               <v-container>
                 <v-row>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.code"
-                      label="CODE"
-                    ></v-text-field>
-                  </v-col>
                   <v-col
                     cols="12"
                     md="3"
@@ -81,6 +74,24 @@
                     <v-text-field
                       v-model="editedItem.name"
                       label="Name"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-text-field
+                      v-model="editedItem.ceoNm"
+                      label="CEO"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-text-field
+                      v-model="editedItem.pass"
+                      label="PASSWARD"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -177,10 +188,13 @@
                     cols="12"
                     md="3"
                   >
-                    <v-text-field
+                    <v-select
                       v-model="editedItem.type"
                       label="TYPE"
-                    ></v-text-field>
+                      :items="typeItems"
+                      item-text="text"
+                      item-value="value"
+                    ></v-select>
                   </v-col>
                   <v-col
                     cols="12"
@@ -196,58 +210,15 @@
                     md="3"
                   >
                     <v-text-field
-                      v-model="editedItem.isPaidMember"
-                      label="IS PAY"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.paidStart"
-                      label="START DATE"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.paidEnd"
-                      label="END DATE"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
                       v-model="editedItem.corpNo"
                       label="CORPORATION NO"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.ceoNm"
-                      label="CEO"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.pass"
-                      label="PASS"
                     ></v-text-field>
                   </v-col>
                 </v-row>
               </v-container>
             </v-card-text>
+
+            <v-divider class="mx-4"></v-divider>
 
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -281,6 +252,11 @@
         </v-dialog>
       </v-toolbar>
     </template>
+
+    <template v-slot:item.type="{ item }">
+      {{ getText(item.type) }}
+    </template>
+
     <template v-slot:item.actions="{ item }">
       <v-icon
         small
@@ -379,6 +355,11 @@ export default {
         updatedAt: '',
         zipCode: ''
       },
+      typeItems: [ 
+        { text: '마린', value: 'M'},
+        { text: '종합상사', value: 'C'},
+        { text: '공급처', value: 'P'},
+      ]
     }
   },
   computed:{
@@ -450,6 +431,10 @@ export default {
       this.$store.dispatch('account/save', { cmd: this.editedIndex, savedItem: this.editedItem });
       this.close()
     },
+    getText(code) {
+      let item = this.typeItems.find(type => type.value === code);
+      return item ? item.text : '';
+    }
   },
   mounted() {
     this.$store.dispatch('account/find', { search: this.search })

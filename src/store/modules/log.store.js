@@ -140,7 +140,7 @@ const mutations = {
   setCartLogs(state) {
     state.cartLogs = {};
     state.logData
-                .filter(data => data.action === 'add')
+                .filter(data => data.action === 'add' && data.keyword !== null)
                 .forEach(data => {
                   const { keyword } = data;
                   if (state.cartLogs[keyword]) state.cartLogs[keyword]++;
