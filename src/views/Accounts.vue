@@ -63,10 +63,33 @@
                     md="3"
                   >
                     <v-text-field
-                      v-model="editedItem.id"
-                      label="ID"
+                      v-model="editedItem.companyNo"
+                      label="COMPANY REG NO"
                     ></v-text-field>
                   </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-text-field
+                      v-model="editedItem.corpNo"
+                      label="CORPORATION NO"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-select
+                      v-model="editedItem.type"
+                      label="TYPE"
+                      :items="typeItems"
+                      item-text="text"
+                      item-value="value"
+                    ></v-select>
+                  </v-col>
+                </v-row>
+                <v-row>
                   <v-col
                     cols="12"
                     md="3"
@@ -83,6 +106,15 @@
                     <v-text-field
                       v-model="editedItem.ceoNm"
                       label="CEO"
+                    ></v-text-field>
+                  </v-col>
+                  <v-col
+                    cols="12"
+                    md="3"
+                  >
+                    <v-text-field
+                      v-model="editedItem.id"
+                      label="ID"
                     ></v-text-field>
                   </v-col>
                   <v-col
@@ -141,7 +173,7 @@
                   </v-col>
                   <v-col
                     cols="12"
-                    md="3"
+                    md="6"
                   >
                     <v-text-field
                       v-model="editedItem.addr1"
@@ -182,36 +214,6 @@
                     <v-text-field
                       v-model="editedItem.area2"
                       label="AREA DETAIL"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-select
-                      v-model="editedItem.type"
-                      label="TYPE"
-                      :items="typeItems"
-                      item-text="text"
-                      item-value="value"
-                    ></v-select>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.companyNo"
-                      label="COMPANY REG NO"
-                    ></v-text-field>
-                  </v-col>
-                  <v-col
-                    cols="12"
-                    md="3"
-                  >
-                    <v-text-field
-                      v-model="editedItem.corpNo"
-                      label="CORPORATION NO"
                     ></v-text-field>
                   </v-col>
                 </v-row>

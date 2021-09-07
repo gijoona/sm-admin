@@ -86,6 +86,7 @@
               :value="loginData.values"
               color="white"
               label-size="5"
+              line-width="1"
               auto-draw
             ></v-sparkline>
           </v-sheet>
@@ -109,6 +110,7 @@
               :value="joinData.accs"
               color="white"
               label-size="5"
+              line-width="1"
               auto-draw
             ></v-sparkline>
           </v-sheet>
