@@ -380,14 +380,13 @@ export default {
       this.$store.dispatch('item/save', { cmd: this.editedIndex, savedItem: this.editedItem });
       this.close()
     },
-    fileUpload(file) {
+    fileUpload(evt) {
+      console.log(evt.target.files[0]);
       let formData = new FormData();
-      formData.append('file', file);
-      formData.append('category', '00');
+      formData.append('file', evt.target.files[0]);
       this.$store
           .dispatch('item/fileUpload', formData)
           .then(data => {
-            console.log(data);
             // 서버에 업로드되면서 encoding된 파일명을 넣어준다.
             this.editedItem.pig = `/${data.filename}`;
           });

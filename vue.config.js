@@ -1,6 +1,7 @@
 module.exports = {
   devServer: {
-    disableHostCheck: true
+    disableHostCheck: true,
+    overlay: false
   },
 
   transpileDependencies: [

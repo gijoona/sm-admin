@@ -94,7 +94,10 @@
       <template v-slot:append>
         <v-divider></v-divider>
         <v-list>
-          <v-list-item link>
+          <v-list-item 
+            link
+            @click="logout"
+          >
             <v-list-item-icon>
               <v-icon>mdi-logout</v-icon>
             </v-list-item-icon>
@@ -187,6 +190,13 @@ export default {
         offset: this.offset,
         easing: this.easing
       }
+    }
+  },
+  
+  methods: {
+    logout() {
+      this.$store.dispatch('user/logout');
+      this.$router.push('/login');
     }
   }
 };

@@ -51,7 +51,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    if (!store.getters['user/isLogin']) {
+    if (!store.getters['user/isLogin'] || store.getters['user/isLogin'] === 'false') {
       next({
         path: '/login',
         query: { redirect: to.fullPath }
